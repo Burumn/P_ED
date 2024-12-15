@@ -31,6 +31,14 @@ public class Calculadora {
         return Math.sqrt(valor);
     }
 
+    public static Integer potencia(Integer base, Integer exponente){
+        double resultado = 1;
+        for (int i = 0; i < exponente; i++) {
+            resultado *= base;
+        }
+        return resultado;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean continuar = true;
@@ -43,7 +51,8 @@ public class Calculadora {
             System.out.println("3. Multiplicar");
             System.out.println("4. Dividir");
             System.out.println("5. Raiz");
-            System.out.println("6. Salir");
+            System.out.println("6. Potencia");
+            System.out.println("7. Salir");
             System.out.print("Opción: ");
             Integer opcion = scanner.nextInt();
 
@@ -95,6 +104,14 @@ public class Calculadora {
                     System.out.println("El resultado de la raíz cuadrada es: " + resultado);
                     break;
                 case 6:
+                    System.out.print("Introduce la base: ");
+                    Integer num1 = scanner.nextInt();
+
+                    System.out.print("Introduce el exponente: ");
+                    Integer num2 = scanner.nextInt();
+                    resultado = potencia(num1, num2);
+                    System.out.println("El resultado de la potencia es: " + resultado);
+                case 7:
                     continuar = false;
                     System.out.println("¡Gracias por usar la calculadora! ¡Hasta luego!");
                     break;
