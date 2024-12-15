@@ -4,24 +4,31 @@ import java.util.Scanner;
 
 public class Calculadora {
 
-    public static double sumar(double a, double b) {
+    public static Integer sumar(Integer a, Integer b) {
         return a + b;
     }
 
-    public static double restar(double a, double b) {
+    public static Integer restar(Integer a, Integer b) {
         return a - b;
     }
 
-    public static double multiplicar(double a, double b) {
+    public static Integer multiplicar(Integer a, Integer b) {
         return a * b;
     }
 
-    public static double dividir(double a, double b) {
+    public static Integer dividir(Integer a, Integer b) {
         if (b == 0) {
             System.out.println("Error: División entre cero no permitida.");
-            return Double.NaN;
+            return Integer.NaN;
         }
         return a / b;
+    }
+
+    public static Integer raiz(Integer valor) {
+        if (valor < 0) {
+            throw new ArithmeticException("No se puede calcular la raíz cuadrada de un número negativo.");
+        }
+        return Math.sqrt(valor);
     }
 
     public static void main(String[] args) {
@@ -35,52 +42,59 @@ public class Calculadora {
             System.out.println("2. Restar");
             System.out.println("3. Multiplicar");
             System.out.println("4. Dividir");
-            System.out.println("5. Salir");
+            System.out.println("5. Raiz");
+            System.out.println("6. Salir");
             System.out.print("Opción: ");
-            int opcion = scanner.nextInt();
+            Integer opcion = scanner.nextInt();
 
-            double resultado = 0;
+            Integer resultado = 0;
 
             switch (opcion) {
                 case 1:
                     System.out.print("Introduce el primer número: ");
-                    double num1 = scanner.nextDouble();
+                    Integer num1 = scanner.nextInt();
 
                     System.out.print("Introduce el segundo número: ");
-                    double num2 = scanner.nextDouble();
+                    Integer num2 = scanner.nextInt();
                     resultado = sumar(num1, num2);
                     System.out.println("El resultado de la suma es: " + resultado);
                     break;
                 case 2:
                     System.out.print("Introduce el primer número: ");
-                    double num1 = scanner.nextDouble();
+                    Integer num1 = scanner.nextInt();
 
                     System.out.print("Introduce el segundo número: ");
-                    double num2 = scanner.nextDouble();
+                    Integer num2 = scanner.nextInt();
                     resultado = restar(num1, num2);
                     System.out.println("El resultado de la resta es: " + resultado);
                     break;
                 case 3:
                     System.out.print("Introduce el primer número: ");
-                    double num1 = scanner.nextDouble();
+                    Integer num1 = scanner.nextInt();
 
                     System.out.print("Introduce el segundo número: ");
-                    double num2 = scanner.nextDouble();
+                    Integer num2 = scanner.nextInt();
                     resultado = multiplicar(num1, num2);
                     System.out.println("El resultado de la multiplicación es: " + resultado);
                     break;
                 case 4:
                     System.out.print("Introduce el primer número: ");
-                    double num1 = scanner.nextDouble();
+                    Integer num1 = scanner.nextInt();
 
                     System.out.print("Introduce el segundo número: ");
-                    double num2 = scanner.nextDouble();
+                    Integer num2 = scanner.nextInt();
                     resultado = dividir(num1, num2);
-                    if (!Double.isNaN(resultado)) {
+                    if (!Integer.isNaN(resultado)) {
                         System.out.println("El resultado de la división es: " + resultado);
                     }
                     break;
                 case 5:
+                    System.out.print("Introduce el número: ");
+                    Integer num1 = scanner.nextInt();
+                    resultado = raizCuadrada(num1);
+                    System.out.println("El resultado de la raíz cuadrada es: " + resultado);
+                    break;
+                case 6:
                     continuar = false;
                     System.out.println("¡Gracias por usar la calculadora! ¡Hasta luego!");
                     break;
